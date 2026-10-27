@@ -1,0 +1,12 @@
+{
+  "app": { "nome": "Progetti", "sottotitolo": "Registro dei progetti di ricerca e consulenza: codici con sigla, cartelle standard, archivio per anno." },
+  "tema": { "modo": "auto", "accento": "#2f5d9e", "carattere": "sistema", "titoli_serif": true, "raggio": 8, "compatto": false },
+  "vocabolario": { "commessa": "progetto", "commesse": "progetti", "cliente": "partner", "clienti": "partner", "genere_commessa": "m", "genere_cliente": "m" },
+  "nomenclatura": { "codice": "{sigla}-{anno}-{num:3}", "cartella": "{codice}_{ente}_{oggetto}", "cifre_numero": 3, "azzera_ogni_anno": true, "numerazione_per_tipo": true, "stile_nomi": "pascal" },
+  "tipi": [
+    { "id": "ricerca", "nome": "Ricerca", "dir": "10_RICERCA", "sigla": "RIC", "etichetta_ente": "Ente finanziatore", "sub": ["01_Protocollo", "02_Dati_Input", "03_Analisi", "04_Verifica", "05_Output", "06_Manoscritti", "07_Riferimenti"] },
+    { "id": "consulenza", "nome": "Consulenza", "dir": "20_CONSULENZA", "sigla": "CON", "etichetta_ente": "Committente", "sub": ["01_Contratto_Riesame", "02_Input", "03_Lavoro", "04_Verifica_Validazione", "05_Consegne", "06_Amministrazione"] },
+    { "id": "didattica", "nome": "Didattica e webinar", "dir": "30_DIDATTICA", "sigla": "DID", "etichetta_ente": "Organizzatore", "sub": ["01_Programma", "02_Materiali", "03_Registrazioni", "04_Feedback"] }
+  ],
+  "registro": { "stati": ["Aperto", "In pausa", "Concluso"], "stato_chiuso": "Concluso", "stato_archiviato": "Archiviato", "colonne_extra": ["Finanziatore", "CUP", "Importo"] }
+}

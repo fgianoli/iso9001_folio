@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="Folio">
+  <rect width="256" height="256" rx="56" fill="#1f5f55"/>
+  <path d="M70 44h78l44 44v108a16 16 0 0 1-16 16H70a16 16 0 0 1-16-16V60a16 16 0 0 1 16-16z" fill="#f3f4f1"/>
+  <path d="M148 44l44 44h-28a16 16 0 0 1-16-16z" fill="#bcd3cc"/>
+  <path d="M92 196V112h52M92 148h40" fill="none" stroke="#1f5f55" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

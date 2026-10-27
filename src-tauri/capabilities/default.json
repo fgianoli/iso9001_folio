@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Permessi della finestra principale: nessun accesso diretto a file o rete dal codice dell'interfaccia.",
+  "windows": ["main"],
+  "permissions": ["core:default"]
+}

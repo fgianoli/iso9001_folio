@@ -1,0 +1,96 @@
+{
+  "app": {
+    "lingua": "en",
+    "nome": "Projects",
+    "sottotitolo": "Register of research and consulting projects: coded numbering, standard folders, archive by year."
+  },
+  "tema": {
+    "modo": "auto",
+    "accento": "#2f5d9e",
+    "carattere": "sistema",
+    "titoli_serif": true,
+    "raggio": 8,
+    "compatto": false
+  },
+  "vocabolario": {
+    "commessa": "project",
+    "commesse": "projects",
+    "cliente": "partner",
+    "clienti": "partners",
+    "genere_commessa": "m",
+    "genere_cliente": "m"
+  },
+  "cartelle": {
+    "gestione": "00_RECORDS",
+    "archivio": "90_ARCHIVE",
+    "prefisso_quarantena": "_QUARANTINE_"
+  },
+  "nomenclatura": {
+    "codice": "{sigla}-{anno}-{num:3}",
+    "cartella": "{codice}_{ente}_{oggetto}",
+    "cifre_numero": 3,
+    "azzera_ogni_anno": true,
+    "numerazione_per_tipo": true,
+    "stile_nomi": "pascal"
+  },
+  "tipi": [
+    {
+      "id": "ricerca",
+      "nome": "Research",
+      "dir": "10_RESEARCH",
+      "sigla": "RES",
+      "etichetta_ente": "Funding body",
+      "sub": [
+        "01_Protocol",
+        "02_Input_Data",
+        "03_Analysis",
+        "04_Verification",
+        "05_Output",
+        "06_Manuscripts",
+        "07_References"
+      ]
+    },
+    {
+      "id": "consulenza",
+      "nome": "Consulting",
+      "dir": "20_CONSULTING",
+      "sigla": "CON",
+      "etichetta_ente": "Client",
+      "sub": [
+        "01_Contract_Review",
+        "02_Input",
+        "03_Work",
+        "04_Verification_Validation",
+        "05_Deliveries",
+        "06_Administration"
+      ]
+    },
+    {
+      "id": "didattica",
+      "nome": "Teaching and webinars",
+      "dir": "30_TEACHING",
+      "sigla": "TEA",
+      "etichetta_ente": "Organizer",
+      "sub": [
+        "01_Programme",
+        "02_Materials",
+        "03_Recordings",
+        "04_Feedback"
+      ]
+    }
+  ],
+  "registro": {
+    "stati": [
+      "Open",
+      "On hold",
+      "Completed"
+    ],
+    "stato_chiuso": "Completed",
+    "stato_archiviato": "Archived",
+    "colonne_extra": [
+      "Funder",
+      "Grant ID",
+      "Amount"
+    ]
+  }
+}

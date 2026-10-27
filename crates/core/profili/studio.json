@@ -1,0 +1,5 @@
+{
+  "app": { "nome": "Folio", "sottotitolo": "Codici, cartelle, clienti e archivio. Il programma sposta file ma non ne elimina mai; ogni operazione parte in simulazione e si può annullare." },
+  "tema": { "modo": "auto", "accento": "#1f5f55", "carattere": "sistema", "titoli_serif": true, "raggio": 6, "compatto": false },
+  "nomenclatura": { "codice": "{anno}-{num}", "cartella": "{codice}_{ente}_{oggetto}", "cifre_numero": 3, "azzera_ogni_anno": true, "numerazione_per_tipo": false, "stile_nomi": "pascal" }
+}

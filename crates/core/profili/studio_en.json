@@ -1,0 +1,126 @@
+{
+  "app": {
+    "lingua": "en",
+    "nome": "Folio",
+    "sottotitolo": "Codes, folders, clients and archive. The program moves files but never deletes them; every operation starts as a simulation and can be undone."
+  },
+  "tema": {
+    "modo": "auto",
+    "accento": "#1f5f55",
+    "carattere": "sistema",
+    "titoli_serif": true,
+    "raggio": 6,
+    "compatto": false
+  },
+  "vocabolario": {
+    "commessa": "job",
+    "commesse": "jobs",
+    "cliente": "client",
+    "clienti": "clients",
+    "genere_commessa": "m",
+    "genere_cliente": "m"
+  },
+  "cartelle": {
+    "gestione": "00_RECORDS",
+    "archivio": "90_ARCHIVE",
+    "prefisso_quarantena": "_QUARANTINE_"
+  },
+  "nomenclatura": {
+    "codice": "{anno}-{num}",
+    "cartella": "{codice}_{ente}_{oggetto}",
+    "cifre_numero": 3,
+    "azzera_ogni_anno": true,
+    "numerazione_per_tipo": false,
+    "stile_nomi": "pascal",
+    "nome_readme": "README.md"
+  },
+  "tipi": [
+    {
+      "id": "cliente",
+      "nome": "Client",
+      "dir": "10_CLIENTS",
+      "sigla": "CLI",
+      "etichetta_ente": "Client",
+      "sub": [
+        "01_Offer_Review",
+        "02_Client_Input",
+        "03_Work",
+        "04_Verification_Validation",
+        "05_Output_Deliveries",
+        "06_Communications",
+        "07_Administration"
+      ]
+    },
+    {
+      "id": "ricerca",
+      "nome": "Research",
+      "dir": "20_RESEARCH",
+      "sigla": "RES",
+      "etichetta_ente": "Project",
+      "sub": [
+        "01_Protocol",
+        "02_Input_Data",
+        "03_Analysis",
+        "04_Verification",
+        "05_Output",
+        "06_Manuscripts",
+        "07_References"
+      ]
+    },
+    {
+      "id": "sviluppo",
+      "nome": "Development",
+      "dir": "30_DEVELOPMENT",
+      "sigla": "DEV",
+      "etichetta_ente": "Customer",
+      "sub": [
+        "01_Requirements_Input",
+        "02_Planning",
+        "03_Code_Repo",
+        "04_Verification_Tests",
+        "05_Documentation",
+        "06_Releases_Deliveries",
+        "07_Changes"
+      ]
+    },
+    {
+      "id": "istituzione",
+      "nome": "Institution",
+      "dir": "40_INSTITUTIONS",
+      "sigla": "INS",
+      "etichetta_ente": "Body",
+      "sub": [
+        "01_Mandate_Review",
+        "02_Input",
+        "03_Work",
+        "04_Verification_Validation",
+        "05_Output_Deliveries",
+        "06_Communications",
+        "07_Administration"
+      ]
+    },
+    {
+      "id": "associazione",
+      "nome": "Association",
+      "dir": "50_ASSOCIATIONS",
+      "sigla": "ASS",
+      "etichetta_ente": "Association",
+      "sub": [
+        "01_Documents",
+        "02_Materials",
+        "03_Output",
+        "04_Communications"
+      ]
+    }
+  ],
+  "registro": {
+    "stati": [
+      "Open",
+      "On hold",
+      "Closed"
+    ],
+    "stato_chiuso": "Closed",
+    "stato_archiviato": "Archived",
+    "colonne_extra": []
+  }
+}

@@ -1,0 +1,19 @@
+[package]
+name = "commesse-core"
+version = "0.2.0"
+edition = "2021"
+description = "Nucleo di Folio: codici, cartelle, clienti, archivio, pulizia. Nessuna dipendenza dall'interfaccia."
+license = "MIT"
+authors = ["Federico Gianoli"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+csv = "1"
+regex = "1"
+chrono = { version = "0.4", default-features = false, features = ["clock", "std"] }
+unicode-normalization = "0.1"
+walkdir = "2"
+
+[dev-dependencies]
+tempfile = "3"

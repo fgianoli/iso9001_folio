@@ -1,0 +1,8 @@
+{
+  "app": { "nome": "Lavori", "sottotitolo": "Un registro semplice dei lavori, con cartelle standard." },
+  "vocabolario": { "commessa": "lavoro", "commesse": "lavori", "cliente": "cliente", "clienti": "clienti", "genere_commessa": "m", "genere_cliente": "m" },
+  "nomenclatura": { "codice": "{anno}-{num:2}", "cartella": "{codice}_{ente}_{oggetto}", "cifre_numero": 2, "stile_nomi": "kebab", "crea_readme": false },
+  "tipi": [
+    { "id": "lavoro", "nome": "Lavoro", "dir": "LAVORI", "sigla": "LAV", "etichetta_ente": "Cliente", "sub": ["Input", "Lavoro", "Output"] }
+  ]
+}

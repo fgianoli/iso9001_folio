@@ -1,0 +1,51 @@
+{
+  "app": {
+    "lingua": "en",
+    "nome": "Work",
+    "sottotitolo": "A simple register of jobs, with standard folders."
+  },
+  "vocabolario": {
+    "commessa": "job",
+    "commesse": "jobs",
+    "cliente": "client",
+    "clienti": "clients",
+    "genere_commessa": "m",
+    "genere_cliente": "m"
+  },
+  "cartelle": {
+    "gestione": "00_RECORDS",
+    "archivio": "90_ARCHIVE",
+    "prefisso_quarantena": "_QUARANTINE_"
+  },
+  "nomenclatura": {
+    "codice": "{anno}-{num:2}",
+    "cartella": "{codice}_{ente}_{oggetto}",
+    "cifre_numero": 2,
+    "stile_nomi": "kebab",
+    "crea_readme": false
+  },
+  "tipi": [
+    {
+      "id": "lavoro",
+      "nome": "Job",
+      "dir": "JOBS",
+      "sigla": "JOB",
+      "etichetta_ente": "Client",
+      "sub": [
+        "Input",
+        "Work",
+        "Output"
+      ]
+    }
+  ],
+  "registro": {
+    "stati": [
+      "Open",
+      "On hold",
+      "Closed"
+    ],
+    "stato_chiuso": "Closed",
+    "stato_archiviato": "Archived",
+    "colonne_extra": []
+  }
+}

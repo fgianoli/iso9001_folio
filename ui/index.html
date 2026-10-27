@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Folio</title>
+<link rel="stylesheet" href="style.css">
+</head><body><div class="wrap">
+<header>
+<svg class="marchio" viewBox="0 0 256 256" aria-hidden="true"><rect width="256" height="256" rx="56"/><path d="M44 84a12 12 0 0 1 12-12h46l16 18h82a12 12 0 0 1 12 12v86a12 12 0 0 1-12 12H56a12 12 0 0 1-12-12z"/><rect class="l" x="72" y="116" width="112" height="12" rx="6"/><rect class="l" x="72" y="142" width="84" height="12" rx="6"/><rect class="l" x="72" y="168" width="98" height="12" rx="6"/></svg>
+<div><h1 id="h_nome" data-nt>Folio</h1><p class="sub" id="h_sub" data-nt></p><p class="sub" id="cfg"></p></div>
+</header>
+
+<div class="card" id="prima" hidden>
+<div class="bar" data-nt role="group" aria-label="Language / Lingua"><button class="btn alt" data-lingua="it" type="button">Italiano</button><button class="btn alt" data-lingua="en" type="button">English</button></div>
+<h2>Da dove vuoi partire?</h2>
+<p class="sub">Scegli un modello di organizzazione. Poi potrai cambiare tutto in Personalizza: nome, colori, tipi di progetto, nomenclature.</p>
+<div class="profili" id="prima_profili"></div>
+</div>
+
+<div class="tabs" role="tablist" id="tabs">
+<button role="tab" aria-selected="true" data-p="p1" data-t="{nuova_commessa}"></button>
+<button role="tab" aria-selected="false" data-p="p5" data-t="{Clienti}"></button>
+<button role="tab" aria-selected="false" data-p="p2" data-t="Riordino"></button>
+<button role="tab" aria-selected="false" data-p="p3" data-t="Pulizia"></button>
+<button role="tab" aria-selected="false" data-p="p4" data-t="Registro e annulla"></button>
+<button role="tab" aria-selected="false" data-p="p8" data-t="Qualità"></button>
+<button role="tab" aria-selected="false" data-p="p7" data-t="Personalizza"></button>
+<button role="tab" aria-selected="false" data-p="p6" data-t="Impostazioni"></button>
+</div>
+
+<section class="panel" id="p1"><div class="cols">
+<div class="card">
+<label for="tipo">Tipo<select id="tipo"></select></label>
+<div class="row2" id="riga_anno"><label for="anno">Anno<input id="anno" maxlength="4"></label><label for="num">Numero<input id="num" maxlength="6"></label></div>
+<label for="cliente"><span id="l_cliente">Cliente</span><select id="cliente"></select></label>
+<label for="ogg">Oggetto<input id="ogg" placeholder="Relazione idraulica" autocomplete="off"></label>
+<label for="resp">Responsabile<input id="resp" autocomplete="off" placeholder="Chi risponde del lavoro"></label>
+<label class="chk"><input type="checkbox" id="riesame" style="width:auto"> Riesame dei requisiti eseguito (ISO 9001 8.2.3)</label>
+<div id="extra_nuova" class="stack"></div>
+</div>
+<div class="card"><div class="code" id="cod"></div><div class="sub" id="nom" style="word-break:break-all"></div>
+<div class="bar"><button class="btn alt" id="n_sim">Simula</button><button class="btn" id="n_go" data-t="Crea {commessa}"></button><span class="msg" id="n_msg"></span></div>
+<pre id="n_out">Scegli il cliente, scrivi l'oggetto e premi Simula.</pre></div></div></section>
+
+<section class="panel" id="p5" hidden><div class="cols">
+<div class="card"><h2 id="c_tit"></h2>
+<label for="c_nome">Nome esteso<input id="c_nome" placeholder="Acme Idrica S.p.A." autocomplete="off"></label>
+<label for="c_breve">Nome breve, usato nelle cartelle<input id="c_breve" placeholder="AcmeIdrica" autocomplete="off"></label>
+<label for="c_tipo">Tipo predefinito<select id="c_tipo"></select></label>
+<label for="c_ref">Referente<input id="c_ref" autocomplete="off"></label>
+<label for="c_note">Note<input id="c_note" autocomplete="off"></label>
+<div class="bar"><button class="btn" id="c_save">Salva</button><button class="btn alt" id="c_reset">Nuova scheda</button><button class="btn alt" id="c_del" hidden>Elimina scheda</button><span class="msg" id="c_msg"></span></div>
+<p class="sub" data-t="Il nome breve finisce nel nome delle cartelle e non si cambia quando ha già {commesse}. Eliminare toglie solo la scheda, mai i file."></p></div>
+<div class="tw"><table><thead><tr><th>Breve</th><th>Nome</th><th>Tipo</th><th data-t="{Commesse}"></th><th>Referente</th><th>Note</th><th></th></tr></thead><tbody id="clienti"></tbody></table></div>
+</div></section>
+
+<section class="panel" id="p2" hidden><div class="stack">
+<p class="sub">Per riordinare cartelle esistenti, scrivi per ognuna dove si trova (relativo alla cartella da riordinare) e dove deve andare (relativo alla cartella principale). Poi seleziona, simula ed esegui.</p>
+<div class="card"><h2>Aggiungi una riga alla mappa</h2>
+<div class="cols due">
+<label for="m_v">Ora<input id="m_v" placeholder="CLIENTI/2025/Acme" autocomplete="off"></label>
+<label for="m_n">Dopo<input id="m_n" placeholder="10_CLIENTI/2025-001_Acme_Rilievi" autocomplete="off"></label>
+<label for="m_t">Nota<input id="m_t" autocomplete="off"></label></div>
+<div class="bar"><button class="btn alt" id="m_add">Aggiungi</button><span class="msg" id="m_msg"></span></div></div>
+<div class="tw"><table><thead><tr><th></th><th>Ora</th><th>Dopo</th><th>Stato</th><th>Nota</th><th></th></tr></thead><tbody id="mappa"></tbody></table></div>
+<div class="bar"><button class="btn alt" id="r_all">Seleziona i pronti</button><button class="btn alt" id="r_sim">Simula selezionati</button><button class="btn" id="r_go" disabled>Esegui selezionati</button><span class="msg" id="r_msg"></span></div>
+<pre id="r_out">Nessuna operazione ancora.</pre></div></section>
+
+<section class="panel" id="p3" hidden><div class="stack">
+<div class="note" data-t="Con Google Drive, OneDrive o Dropbox attivi, ciò che sposti sul PC si sposta anche nel cloud. I file sicuri vanno in una quarantena datata dentro {archivio}, da cui li puoi recuperare. Zip, copie e download restano solo in un elenco CSV: li decidi tu."></div>
+<div class="bar"><button class="btn" id="s_go">Scansiona</button><span class="msg" id="s_msg"></span></div>
+<div class="tw"><table><thead><tr><th>Categoria</th><th>Voci</th><th>Peso</th><th>Rischio</th></tr></thead><tbody id="cat"><tr><td colspan="4" class="empty">Nessuna scansione ancora. Le cartelle da scansionare si scelgono in Impostazioni.</td></tr></tbody></table></div>
+<p class="sub" id="s_csv"></p>
+<div class="bar"><button class="btn alt" id="q_sim" disabled>Simula quarantena dei file sicuri</button><button class="btn" id="q_go" disabled>Sposta in quarantena</button><span class="msg" id="q_msg"></span></div>
+<pre id="q_out">Nessuna operazione ancora.</pre></div></section>
+
+<section class="panel" id="p4" hidden><div class="stack">
+<div class="card"><h2>Annulla l'ultima operazione di spostamento</h2><p class="sub" id="g_ult"></p>
+<div class="bar"><button class="btn alt" id="a_sim">Simula annullamento</button><button class="btn" id="a_go" disabled>Annulla davvero</button><span class="msg" id="a_msg"></span></div>
+<pre id="a_out">Nessuna operazione ancora.</pre></div>
+<div class="bar"><h2 style="margin:0" data-t="Registro: {commesse}"></h2><span class="msg" id="reg_msg"></span></div>
+<div class="card" id="ar_card" hidden><h2 id="ar_tit"></h2><p class="sub" data-t="Sposta la cartella in {archivio} e aggiorna il registro. Si può annullare dal riquadro qui sopra."></p><pre id="ar_out"></pre>
+<div class="bar"><button class="btn" id="ar_go">Conferma archiviazione</button><button class="btn alt" id="ar_no">Chiudi</button></div></div>
+<div class="card" id="az_card" hidden><h2 id="az_tit"></h2><p class="sub" id="az_desc"></p><input id="az_in" autocomplete="off"><div class="bar"><button class="btn" id="az_ok">Conferma</button><button class="btn alt" id="az_no">Chiudi</button><span class="msg" id="az_msg"></span></div></div>
+<div class="tw"><table><thead id="reg_h"></thead><tbody id="reg"></tbody></table></div></div></section>
+
+<section class="panel" id="p8" hidden><div class="stack">
+<div class="note">Qui si tengono le registrazioni della qualità richieste dalla ISO 9001: le non conformità con la loro azione correttiva (8.7, 10.2), il registro cronologico delle operazioni (7.5.3) e la procedura documentata (7.5.1). Il programma ti aiuta a tenerle in ordine; non sostituisce un sistema di gestione completo.</div>
+<div class="card"><h2>Registra una non conformità</h2>
+<div class="cols due"><label for="nc_c"><span data-t="Collegamento a {commessa} (facoltativo)"></span><select id="nc_c"></select></label><label for="nc_r">Responsabile<input id="nc_r" autocomplete="off"></label></div>
+<label for="nc_d">Che cosa non è conforme<textarea id="nc_d" style="font-family:var(--font);min-height:60px"></textarea></label>
+<div class="bar"><button class="btn" id="nc_add">Registra</button><span class="msg" id="nc_msg"></span></div></div>
+<div class="tw"><table><thead><tr><th>Codice</th><th data-t="{Commessa}"></th><th>Descrizione</th><th>Causa</th><th>Azione correttiva</th><th>Stato</th><th>Efficacia</th></tr></thead><tbody id="nc"></tbody></table></div>
+<div class="bar"><h2 style="margin:0">Registro delle operazioni</h2><button class="btn alt pic" id="ev_ref">Aggiorna</button></div>
+<div class="tw"><table><thead><tr><th>Data e ora</th><th>Utente</th><th>Operazione</th><th>Codice</th><th>Dettaglio</th></tr></thead><tbody id="eventi"></tbody></table></div>
+<div class="card"><h2>Procedura documentata</h2><p class="sub">Genera dal tuo schema attuale un documento che descrive codifica, cartelle, controlli e registrazioni. Ogni emissione crea una nuova revisione nella cartella dei registri; le precedenti non si toccano.</p>
+<div class="bar"><button class="btn alt" id="pr_v">Mostra anteprima</button><button class="btn" id="pr_go">Emetti procedura</button><span class="msg" id="pr_msg"></span></div><pre id="pr_out" hidden></pre></div>
+</div></section>
+
+<section class="panel" id="p6" hidden><div class="cols due">
+<div class="card"><h2>Cartelle</h2>
+<label for="i_radice">Cartella principale (qui nasce l'organizzazione)<span class="bar"><input id="i_radice" autocomplete="off" style="flex:1"><button class="btn alt pic" data-sfoglia="i_radice" type="button">Sfoglia…</button></span></label>
+<label for="i_origine">Cartella con i lavori esistenti da riordinare<span class="bar"><input id="i_origine" autocomplete="off" style="flex:1"><button class="btn alt pic" data-sfoglia="i_origine" type="button">Sfoglia…</button></span></label>
+<label for="i_scan">Sottocartelle da scansionare per la pulizia (una per riga, relative alla cartella da riordinare)<textarea id="i_scan" placeholder="CLIENTI&#10;RICERCA"></textarea></label>
+<p class="sub">Le modifiche si salvano con la barra in basso.</p></div>
+<div class="card"><h2>Struttura base</h2><p class="sub" data-t="Crea nella cartella principale una cartella per ogni tipo, più {gestione} (registro) e {archivio}. Non tocca nulla di esistente."></p>
+<div class="bar"><button class="btn alt" id="b_sim">Simula</button><button class="btn" id="b_go">Crea struttura</button><span class="msg" id="b_msg"></span></div>
+<pre id="b_out">Nessuna operazione ancora.</pre>
+<div class="bar"><button class="btn alt pic" id="b_dati" type="button">Apri la cartella dei dati</button></div>
+<p class="sub" id="i_dati"></p></div></div></section>
+
+<section class="panel" id="p7" hidden><div class="stack">
+<p class="sub">Qui adatti il programma al tuo modo di lavorare. Le modifiche si vedono subito, ma valgono per le operazioni solo dopo Salva.</p>
+
+<div class="card"><h2>Modelli di partenza e condivisione</h2>
+<p class="sub">Applica un modello pronto, oppure esporta la tua configurazione per usarla su un altro computer o condividerla (non contiene i percorsi del tuo PC).</p>
+<div class="bar"><select id="pf_sel" style="max-width:280px"></select><button class="btn alt" id="pf_app">Applica il modello</button><button class="btn alt" id="pf_exp">Esporta in un file…</button><button class="btn alt" id="pf_imp">Importa da un file…</button><span class="msg" id="pf_msg"></span></div>
+<p class="sub" id="pf_desc"></p></div>
+
+<div class="card"><h2>Aspetto</h2>
+<div class="griglia">
+<label for="a_lin">Lingua<select id="a_lin" data-k="app.lingua"><option value="it">Italiano</option><option value="en">English</option></select></label>
+<label for="a_nome">Nome del programma<input id="a_nome" data-k="app.nome" maxlength="60"></label>
+<label for="a_modo">Tema<select id="a_modo" data-k="tema.modo"><option value="auto">Come il sistema</option><option value="chiaro">Chiaro</option><option value="scuro">Scuro</option></select></label>
+<label for="a_car">Carattere<select id="a_car" data-k="tema.carattere"><option value="sistema">Del sistema</option><option value="serif">Con grazie (serif)</option><option value="mono">A spaziatura fissa</option></select></label>
+<label for="a_rag">Angoli arrotondati: <output id="a_rag_o"></output><input id="a_rag" type="range" min="0" max="20" data-k="tema.raggio"></label>
+</div>
+<label for="a_sott">Frase sotto il titolo<textarea id="a_sott" data-k="app.sottotitolo" style="min-height:56px;font-family:var(--font)"></textarea></label>
+<div class="bar"><span class="sub">Colore principale</span><input type="color" id="a_acc" data-k="tema.accento" aria-label="Colore principale"><div class="preset" id="a_preset"></div></div>
+<div class="bar"><label class="chk"><input type="checkbox" id="a_serif" data-k="tema.titoli_serif"> Titoli con le grazie</label><label class="chk"><input type="checkbox" id="a_comp" data-k="tema.compatto"> Spaziature compatte</label></div></div>
+
+<div class="card"><h2>Parole</h2><p class="sub">Come chiami le cose nel tuo lavoro. Compaiono in tutte le schede.</p>
+<div class="griglia">
+<label for="v_c1">Una commessa si chiama<input id="v_c1" data-k="vocabolario.commessa"></label>
+<label for="v_c2">Più commesse si chiamano<input id="v_c2" data-k="vocabolario.commesse"></label>
+<label for="v_g1">Genere<select id="v_g1" data-k="vocabolario.genere_commessa"><option value="f">femminile (nuova)</option><option value="m">maschile (nuovo)</option></select></label>
+<label for="v_k1">Un cliente si chiama<input id="v_k1" data-k="vocabolario.cliente"></label>
+<label for="v_k2">Più clienti si chiamano<input id="v_k2" data-k="vocabolario.clienti"></label>
+<label for="v_g2">Genere<select id="v_g2" data-k="vocabolario.genere_cliente"><option value="m">maschile (nuovo)</option><option value="f">femminile (nuova)</option></select></label>
+</div></div>
+
+<div class="card"><h2>Nomenclature</h2>
+<p class="sub">Il codice è l'identificativo unico (ISO 9001, cl. 7.5); il nome della cartella lo contiene sempre. Clicca un campo per inserirlo.</p>
+<label for="n_cod">Codice <span class="chips" id="ch_cod"></span><input id="n_cod" data-k="nomenclatura.codice" autocomplete="off" spellcheck="false"></label>
+<label for="n_car">Nome della cartella <span class="chips" id="ch_car"></span><input id="n_car" data-k="nomenclatura.cartella" autocomplete="off" spellcheck="false"></label>
+<div class="griglia">
+<label for="n_cif">Cifre del numero<input id="n_cif" type="number" min="1" max="6" data-k="nomenclatura.cifre_numero"></label>
+<label for="n_stile">Stile dei nomi<select id="n_stile" data-k="nomenclatura.stile_nomi"><option value="pascal">AcmeIdrica</option><option value="snake">acme_idrica</option><option value="kebab">acme-idrica</option><option value="maiuscolo">ACMEIDRICA</option></select></label>
+<label for="n_vp">Prefisso delle versioni<input id="n_vp" data-k="nomenclatura.versione_prefisso" maxlength="6"></label>
+<label for="n_vc">Cifre delle versioni<input id="n_vc" type="number" min="1" max="4" data-k="nomenclatura.versione_cifre"></label>
+<label for="n_rd">Nome del file di presentazione<input id="n_rd" data-k="nomenclatura.nome_readme"></label>
+</div>
+<div class="bar"><label class="chk"><input type="checkbox" id="n_az" data-k="nomenclatura.azzera_ogni_anno"> La numerazione riparte da 1 a ogni anno</label><label class="chk"><input type="checkbox" id="n_pt" data-k="nomenclatura.numerazione_per_tipo"> Numerazione separata per tipo (serve {sigla})</label></div>
+<div class="bar"><label class="chk"><input type="checkbox" id="n_rm" data-k="nomenclatura.crea_readme"> Crea il file di presentazione in ogni cartella</label><label class="chk"><input type="checkbox" id="n_ap" data-k="nomenclatura.archivio_per_anno"> Archivio diviso per anno</label></div>
+<div class="card" style="background:var(--bg)"><h3>Anteprima</h3><div class="code" id="an_cod"></div><div class="sub" id="an_nom" style="word-break:break-all"></div><div class="sottocart" id="an_sub"></div></div></div>
+
+<div class="sezione"><div class="bar" style="justify-content:space-between"><div><h2 style="margin:0">Tipi di progetto</h2><p class="sub">Ogni tipo ha la sua cartella, le sue sottocartelle e un modello di presentazione.</p></div><button class="btn alt" id="t_add">Aggiungi un tipo</button></div>
+<div class="stack" id="tipi"></div></div>
+
+<div class="cols due">
+<div class="card"><h2 data-t="Registro: {commesse}"></h2>
+<label for="r_stati">Stati, uno per riga, nell'ordine di avanzamento (il primo è quello iniziale)<textarea id="r_stati" data-lista="registro.stati"></textarea></label>
+<div class="griglia"><label for="r_chiuso">Stato che consente l'archiviazione<select id="r_chiuso" data-k="registro.stato_chiuso"></select></label>
+<label for="r_arch">Stato dopo l'archiviazione<input id="r_arch" data-k="registro.stato_archiviato"></label></div>
+<label for="r_extra">Colonne in più, una per riga (es. CIG, Importo, Referente)<textarea id="r_extra" data-lista="registro.colonne_extra"></textarea></label></div>
+<div class="card"><h2>Cartelle di servizio</h2>
+<div class="griglia"><label for="f_gest">Cartella del registro<input id="f_gest" data-k="cartelle.gestione"></label>
+<label for="f_arch">Cartella dell'archivio<input id="f_arch" data-k="cartelle.archivio"></label>
+<label for="f_quar">Prefisso della quarantena<input id="f_quar" data-k="cartelle.prefisso_quarantena"></label></div>
+<p class="sub">Le cartelle già create non vengono rinominate: se cambi questi nomi, spostale tu prima di usarli.</p></div></div>
+
+<div class="card"><h2>Qualità (ISO 9001)</h2>
+<div class="griglia"><label for="q_anni">Anni di conservazione dopo l'archiviazione (0 = non indicato)<input id="q_anni" type="number" min="0" max="99" data-k="qualita.conservazione_anni"></label></div>
+<div class="bar"><label class="chk"><input type="checkbox" id="q_app" data-k="qualita.richiedi_approvazione"> Si chiude solo dopo l'approvazione (rilascio, 8.6)</label><label class="chk"><input type="checkbox" id="q_ev" data-k="qualita.registra_eventi"> Registro cronologico delle operazioni (7.5.3)</label></div></div>
+
+<div class="card"><h2>Pulizia</h2>
+<div class="griglia"><label for="u_soglia">Segnala i file oltre (MB)<input id="u_soglia" type="number" min="1" data-k="pulizia.soglia_grande_mb"></label></div>
+<label for="u_escl">Cartelle da non visitare, una per riga<textarea id="u_escl" data-lista="pulizia.esclusi"></textarea></label>
+<label for="u_parole">Parole nel nome file da segnalare (solo elenco, non si spostano), una per riga<textarea id="u_parole" data-lista="pulizia.parole_da_verificare" placeholder="bozza&#10;vecchio"></textarea></label>
+<div><span class="sub">Categorie sicure da considerare nella quarantena</span><div class="chips" id="u_cats" style="margin-top:6px;gap:10px"></div></div></div>
+</div></section>
+</div>
+
+<div class="salva" id="salvabar" hidden><div class="in"><span class="msg" id="sv_msg">Modifiche non salvate</span><button class="btn alt" id="sv_no">Annulla modifiche</button><button class="btn" id="sv_ok">Salva</button></div></div>
+<script src="i18n.js"></script><script src="app.js"></script></body></html>

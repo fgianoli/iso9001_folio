@@ -1,0 +1,43 @@
+name: Release
+# Si avvia creando un tag, ad esempio:  git tag v0.2.0 && git push --tags
+# Crea una bozza di release con gli installer per Windows, macOS e Linux.
+on:
+  push:
+    tags: ["v*"]
+permissions:
+  contents: write
+jobs:
+  pubblica:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: windows-latest, args: "" }
+          - { os: macos-latest, args: "--target aarch64-apple-darwin" }
+          - { os: macos-13, args: "--target x86_64-apple-darwin" }
+          - { os: ubuntu-22.04, args: "" }
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Librerie di sistema (Linux)
+        if: matrix.os == 'ubuntu-22.04'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev libssl-dev xdg-utils
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ contains(matrix.args, 'apple') && 'aarch64-apple-darwin,x86_64-apple-darwin' || '' }}
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo install tauri-cli --version "^2" --locked
+      - uses: tauri-apps/tauri-action@v0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Per firmare gli installer (facoltativo, vedi README):
+          # APPLE_CERTIFICATE, APPLE_CERTIFICATE_PASSWORD, APPLE_SIGNING_IDENTITY, APPLE_ID, APPLE_PASSWORD, APPLE_TEAM_ID
+        with:
+          tauriScript: cargo tauri
+          tagName: ${{ github.ref_name }}
+          releaseName: "Folio ${{ github.ref_name }}"
+          releaseBody: "Scarica l'installer per il tuo sistema qui sotto. Istruzioni nel README."
+          releaseDraft: true
+          args: ${{ matrix.args }}
